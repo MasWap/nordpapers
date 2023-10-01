@@ -13,7 +13,7 @@ import { createVuetify } from 'vuetify'
 
 // Custom theme properties
 // https://vuetifyjs.com/en/features/theme/#custom-properties
-const customNordTheme = {
+const customDarkNordTheme = {
   dark: true,
   colors : {
     primary: '#5e81ac',
@@ -27,12 +27,27 @@ const customNordTheme = {
   },
 }
 
+const customLightNordTheme = {
+  dark: false,
+  colors : {
+    primary: '#5e81ac',
+    secondary: '#88c0d0',
+    error: '#bf616a',
+    info: '#ebcb8b',
+    success: '#a3be8c',
+    warning: '#d08770',
+    background: '#  ',
+    surface: '#e5e9f0',
+  },
+}
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
-    defaultTheme: 'customNordTheme',
+    defaultTheme: 'customLightNordTheme',
     themes: {
-      customNordTheme,
+      customDarkNordTheme,
+      customLightNordTheme,
     },
   },
 });
