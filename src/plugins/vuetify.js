@@ -24,6 +24,9 @@ const customDarkNordTheme = {
     warning: '#d08770',
     background: '#2e3440',
     surface: '#3b4252',
+    'on-background': '#eceff4',
+    'on-surface': '#eceff4',
+    'on-primary': '#eceff4',
   },
 }
 
@@ -38,6 +41,9 @@ const customLightNordTheme = {
     warning: '#d08770',
     background: '#eceff4',
     surface: '#e5e9f0',
+    'on-background': '#4c566a',
+    'on-surface': '#4c566a',
+    'on-primary': '#eceff4',
   },
 }
 
