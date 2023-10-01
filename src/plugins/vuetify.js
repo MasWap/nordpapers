@@ -36,7 +36,7 @@ const customLightNordTheme = {
     info: '#ebcb8b',
     success: '#a3be8c',
     warning: '#d08770',
-    background: '#  ',
+    background: '#eceff4',
     surface: '#e5e9f0',
   },
 }
