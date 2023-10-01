@@ -5,9 +5,9 @@
       Nordpapers
     </v-app-bar-title>
     <v-btn :icon="theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'"
-      @click="toggleTheme"></v-btn>
+      @click="handleThemeState"></v-btn>
     <v-btn icon="mdi-github" href="https://github.com/Ahmosys/nordpapers" target="_blank"></v-btn>
-    <v-btn icon="mdi-information-outline" @click="toggleDialog"></v-btn>
+    <v-btn icon="mdi-information-outline" @click="handleDialogState"></v-btn>
     <v-dialog v-model="dialog" width="512">
       <v-card title="Disclaimer" prepend-icon="mdi-information-outline">
         <v-card-text>
@@ -17,7 +17,7 @@
           will promptly remove them.
         </v-card-text>
         <v-card-actions>
-          <v-btn variant="tonal" block @click="toggleDialog">Close</v-btn>
+          <v-btn variant="tonal" block @click="handleDialogState">Close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -31,12 +31,12 @@ import { useTheme } from 'vuetify'
 let dialog = ref(false)
 const theme = useTheme()
 
-function toggleTheme() {
+function handleThemeState() {
   // Handles theme change based on current theme
   theme.global.name.value = theme.global.current.value.dark ? 'customLightNordTheme' : 'customDarkNordTheme';
 }
 
-function toggleDialog() {
+function handleDialogState() {
   // Handles dialog visibility
   dialog.value = !dialog.value
 }
