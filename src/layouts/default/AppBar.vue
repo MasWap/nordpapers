@@ -1,10 +1,10 @@
 <template>
-  <v-app-bar scroll-behavior="elevate" color="primary">
+  <v-app-bar scroll-behavior="elevate">
     <v-app-bar-title>
       <v-icon icon="mdi-wallpaper" />
       Nordpapers
     </v-app-bar-title>
-    <v-btn :icon="theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-white-balance-sunny'" @click="toggleTheme"></v-btn>
+    <v-btn :icon="theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-weather-sunny'" @click="toggleTheme"></v-btn>
     <v-btn icon="mdi-github" href="https://github.com/Ahmosys/nordpapers" target="_blank"></v-btn>
     <v-btn icon="mdi-information-outline"></v-btn>
   </v-app-bar>
