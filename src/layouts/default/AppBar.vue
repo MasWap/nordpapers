@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar scroll-behavior="elevate">
+  <v-app-bar flat scroll-behavior="hide">
     <v-app-bar-title>
       <v-icon icon="mdi-wallpaper" />
       Nordpapers
