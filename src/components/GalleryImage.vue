@@ -15,7 +15,7 @@
             class="elevation-15"
             :src="getImageProxyUrl(image.download_url)"
             :aspect-ratio="16 / 9"
-            lazy-src="https://picsum.photos/10/6"
+            :lazy-src="getMinimizedImageProxyUrl(image.download_url)"
             cover
             v-bind="props"
           >
@@ -40,12 +40,16 @@ import { onMounted, ref } from "vue";
 const REPOSITORY = "ahmosys/nordpapers";
 const IMAGES_DIRECTORY = "public/images";
 const GITHUB_API_URL = `https://api.github.com/repos/${REPOSITORY}/contents/${IMAGES_DIRECTORY}`;
-const IMG_PROXY_URL = "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
+const IMG_PROXY_URL_FULL = "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
+const IMG_PROXY_URL_MIN = "https://dc1imgproxy.fly.dev/x/rs:auto:10:6:1/plain/";
 
 const images = ref([]);
 
 // Function to get the URL of an image
-const getImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL}${downloadUrl}`;
+const getImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL_FULL}${downloadUrl}`;
+
+// Function to get the URL of a minimized image
+const getMinimizedImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL_MIN}${downloadUrl}`;
 
 // Function to fetch images
 const fetchImages = async () => {
