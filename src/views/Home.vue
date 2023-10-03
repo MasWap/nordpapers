@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import GalleryImage from '@/components/GalleryImage.vue'
+  import GalleryImage from '@/components/GalleryImage.vue'
 </script>
