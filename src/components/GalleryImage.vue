@@ -10,13 +10,14 @@
         lg="3"
         xl="3"
       >
-        <v-hover v-slot="{ isHovering, props }">
+        <v-card variant="outlined" elevation="10" :href="image.download_url" target="_blank">
           <v-img
-            :class="isHovering ? 12 : 2"
-            :src="getImageUrl(image.download_url)"
+            class="elevation-15"
+            :src="getImageProxyUrl(image.download_url)"
             :aspect-ratio="16 / 9"
             lazy-src="https://picsum.photos/10/6"
             cover
+            v-bind="props"
           >
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
@@ -27,7 +28,7 @@
               </v-row>
             </template>
           </v-img>
-        </v-hover>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -44,7 +45,7 @@ const IMG_PROXY_URL = "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
 const images = ref([]);
 
 // Function to get the URL of an image
-const getImageUrl = (downloadUrl) => `${IMG_PROXY_URL}${downloadUrl}`;
+const getImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL}${downloadUrl}`;
 
 // Function to fetch images
 const fetchImages = async () => {
