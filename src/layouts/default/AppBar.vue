@@ -25,21 +25,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useTheme } from 'vuetify'
+  import { ref } from 'vue';
+  import { useTheme } from 'vuetify'
 
-let dialog = ref(false)
-const theme = useTheme()
+  let dialog = ref(false)
+  const theme = useTheme()
 
-function handleThemeState() {
-  // Handles theme change based on current theme
-  theme.global.name.value = theme.global.current.value.dark ? 'customLightNordTheme' : 'customDarkNordTheme';
-}
+  function handleThemeState() {
+    // Handles theme change based on current theme
+    theme.global.name.value = theme.global.current.value.dark ? 'customLightNordTheme' : 'customDarkNordTheme';
+  }
 
-function handleDialogState() {
-  // Handles dialog visibility
-  dialog.value = !dialog.value
-}
+  function handleDialogState() {
+    // Handles dialog visibility
+    dialog.value = !dialog.value
+  }
 </script>
 
 
