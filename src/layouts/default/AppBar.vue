@@ -42,15 +42,21 @@ import { useTheme } from "vuetify";
 let dialog = ref(false);
 const theme = useTheme();
 
+/**
+ * Handles the theme change based on the current theme.
+ * It toggles between "customLightNordTheme" and "customDarkNordTheme".
+ */
 function handleThemeState() {
-  // Handles theme change based on current theme
   theme.global.name.value = theme.global.current.value.dark
     ? "customLightNordTheme"
     : "customDarkNordTheme";
 }
 
+/**
+ * Handles the visibility state of the dialog.
+ * It toggles the dialog's visibility.
+ */
 function handleDialogState() {
-  // Handles dialog visibility
   dialog.value = !dialog.value;
 }
 </script>
