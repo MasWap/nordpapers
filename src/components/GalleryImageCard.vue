@@ -20,6 +20,14 @@
           ></v-progress-circular>
         </v-row>
       </template>
+      <template v-slot:error>
+        <v-img
+          :src="image.download_url"
+          :aspect-ratio="16 / 9"
+          cover
+          v-bind="props"
+        ></v-img>
+      </template>
     </v-img>
   </v-card>
 </template>
