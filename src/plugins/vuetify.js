@@ -18,6 +18,7 @@ const customDarkNordTheme = {
   colors : {
     primary: '#5e81ac',
     secondary: '#88c0d0',
+    tertiary: '#b48ead',
     error: '#bf616a',
     info: '#ebcb8b',
     success: '#a3be8c',
@@ -35,6 +36,7 @@ const customLightNordTheme = {
   colors : {
     primary: '#5e81ac',
     secondary: '#88c0d0',
+    tertiary: '#b48ead',
     error: '#bf616a',
     info: '#ebcb8b',
     success: '#a3be8c',
