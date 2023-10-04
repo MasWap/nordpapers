@@ -10,7 +10,12 @@
         lg="3"
         xl="3"
       >
-        <v-card variant="outlined" elevation="10" :href="image.download_url" target="_blank">
+        <v-card
+          elevation="10"
+          :href="image.download_url"
+          :border="10"
+          target="_blank"
+        >
           <v-img
             class="elevation-15"
             :src="getImageProxyUrl(image.download_url)"
@@ -40,18 +45,29 @@ import { onMounted, ref } from "vue";
 const REPOSITORY = "ahmosys/nordpapers";
 const IMAGES_DIRECTORY = "public/images";
 const GITHUB_API_URL = `https://api.github.com/repos/${REPOSITORY}/contents/${IMAGES_DIRECTORY}`;
-const IMG_PROXY_URL_FULL = "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
+const IMG_PROXY_URL_FULL =
+  "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
 const IMG_PROXY_URL_MIN = "https://dc1imgproxy.fly.dev/x/rs:auto:10:6:1/plain/";
 
 const images = ref([]);
 
-// Function to get the URL of an image
-const getImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL_FULL}${downloadUrl}`;
+/**
+ * Get the URL of an image with a full-sized proxy.
+ * @param {string} baseUrl - The base URL of the image.
+ * @returns {string} - The URL of the image with the imgproxy.
+ */
+const getImageProxyUrl = (baseUrl) => `${IMG_PROXY_URL_FULL}${baseUrl}`;
 
-// Function to get the URL of a minimized image
-const getMinimizedImageProxyUrl = (downloadUrl) => `${IMG_PROXY_URL_MIN}${downloadUrl}`;
+/**
+ * Get the URL of a minimized image with a proxy.
+ * @param {string} baseUrl - The base URL of the image.
+ * @returns {string} - The URL of the minimized image via imgproxy.
+ */
+const getMinimizedImageProxyUrl = (baseUrl) => `${IMG_PROXY_URL_MIN}${baseUrl}`;
 
-// Function to fetch images
+/**
+ * Fetch files from repository folder and retrieve only images via GitHub API.
+ */
 const fetchImages = async () => {
   try {
     const response = await fetch(GITHUB_API_URL);
