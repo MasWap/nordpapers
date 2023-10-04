@@ -5,7 +5,10 @@
     </div>
     <div class="pt-0">
       The images have not been created by me, they have mainly been gathered
-      from Reddit and other origins.
+      from Reddit and other origins. 
+    </div>
+    <div class="pt-0">
+      All credits belong to the respective artists.
     </div>
     <v-divider></v-divider>
     <div>{{ new Date().getFullYear() }} — <strong>Nordpapers</strong></div>
