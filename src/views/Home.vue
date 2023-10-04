@@ -21,6 +21,20 @@
         </p>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <v-alert
+          type="info"
+          title="Tips"
+          text="To download an image, simply click on it, and it will open in its original size in a new tab."
+          closable
+          icon="mdi-lightbulb-on"
+          close-label="Close Alert"
+          variant="tonal"
+          border="start"
+        ></v-alert>
+      </v-col>
+    </v-row>
   </v-container>
   <gallery-image />
 </template>
