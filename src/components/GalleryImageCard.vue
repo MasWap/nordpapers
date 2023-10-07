@@ -33,8 +33,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-
 const IMG_PROXY_URL_FULL =
   "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
 const IMG_PROXY_URL_MIN = "https://dc1imgproxy.fly.dev/x/rs:auto:10:6:1/plain/";
