@@ -8,7 +8,7 @@
           <v-icon icon="mdi-palette text-tertiary"></v-icon>
         </p>
         <p>
-          Interested in contributing your own wallpapers? We welcome your
+          Interested in contributing your own wallpapers? I welcome your
           contributions - just submit a
           <v-chip
             color="secondary"
