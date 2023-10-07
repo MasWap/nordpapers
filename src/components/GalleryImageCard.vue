@@ -6,9 +6,9 @@
     target="_blank"
   >
     <v-img
-      :src="getImageProxyUrl(image.download_url)"
+      :src="getImageProxyUrl(image.download_url, 'full')"
       :aspect-ratio="16 / 9"
-      :lazy-src="getMinimizedImageProxyUrl(image.download_url)"
+      :lazy-src="getImageProxyUrl(image.download_url, 'min')"
       cover
       v-bind="props"
     >
@@ -28,29 +28,55 @@
           v-bind="props"
         ></v-img>
       </template>
+      <v-tooltip activator="parent" location="top"
+        >{{ image.name }} —
+        {{ `${imageResolution.width}x${imageResolution.height}` }}</v-tooltip
+      >
     </v-img>
   </v-card>
 </template>
 
 <script setup>
-const IMG_PROXY_URL_FULL ="https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/";
-const IMG_PROXY_URL_MIN = "https://dc1imgproxy.fly.dev/x/rs:auto:10:6:1/plain/";
+// TODO: View if need to remove lazy URL can cause perf issue
+import { onMounted, ref } from "vue";
+
+const IMG_PROXY_URLS = {
+  full: "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/",
+  min: "https://dc1imgproxy.fly.dev/x/rs:auto:10:6:1/plain/",
+};
 
 const props = defineProps(["image"]);
+const imageResolution = ref({
+  height: "",
+  width: "",
+});
 
 /**
- * Get the URL of an image with a full-sized proxy.
+ * Get the image proxy URL for a specific type.
  * @param {string} baseUrl - The base URL of the image.
- * @returns {string} The URL of the image with the imgproxy.
+ * @param {string} type - The type of image (e.g., 'full' or 'min').
+ * @returns {string} The image proxy URL.
  */
-const getImageProxyUrl = (baseUrl) => `${IMG_PROXY_URL_FULL}${baseUrl}`;
+const getImageProxyUrl = (baseUrl, type) => `${IMG_PROXY_URLS[type]}${baseUrl}`;
 
 /**
- * Get the URL of a minimized image with a proxy.
+ * Get the resolution of the image and update the imageResolution ref.
  * @param {string} baseUrl - The base URL of the image.
- * @returns {string} The URL of the minimized image via imgproxy.
  */
-const getMinimizedImageProxyUrl = (baseUrl) => `${IMG_PROXY_URL_MIN}${baseUrl}`;
+const getImageResolution = (baseUrl) => {
+  const img = new Image();
+  img.onload = () => {
+    imageResolution.value = {
+      width: img.naturalWidth,
+      height: img.naturalHeight,
+    };
+  };
+  img.src = baseUrl;
+};
+
+onMounted(() => {
+  getImageResolution(props.image.download_url);
+});
 </script>
 
 <style scoped>
