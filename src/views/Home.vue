@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="my-5">
+    <v-row class="mt-5">
       <v-col cols="12" class="text-center">
         <p class="text-h2 font-weight-bold text-secondary">Nordpapers</p>
         <p class="text-h5 font-weight-light mt-1 text-success">
