@@ -3,7 +3,9 @@
     elevation="10"
     variant="outlined"
     :href="image.download_url"
-    target="_blank"
+    @click="expandCard"
+    :style="{ height: cardHeight, width: cardWidth }"
+    :class="{ expanded: isExpanded }"
   >
     <v-img
       :src="getImageProxyUrl(image.download_url, 'full')"
@@ -38,7 +40,7 @@
 
 <script setup>
 // TODO: View if need to remove lazy URL can cause perf issue
-import { onMounted, ref } from "vue";
+import { onMounted, ref} from "vue";
 
 const IMG_PROXY_URLS = {
   full: "https://dc1imgproxy.fly.dev/x/rs:auto:332:200:1/plain/",
@@ -50,6 +52,8 @@ const imageResolution = ref({
   height: "",
   width: "",
 });
+
+const isExpanded = ref(false);
 
 /**
  * Get the image proxy URL for a specific type.
@@ -77,10 +81,20 @@ const getImageResolution = (baseUrl) => {
 onMounted(() => {
   getImageResolution(props.image.download_url);
 });
+
+const expandCard = () => {
+  isExpanded.value = !isExpanded.value;
+};
 </script>
 
 <style scoped>
+
 .v-card {
   border-width: 2px;
+  transition: height 0.3s;
+}
+
+.expanded {
+  height: 400px; /* Ajustez la hauteur d'expansion souhaitée */
 }
 </style>
